@@ -1,0 +1,82 @@
+-- ******************************************************************
+-- Version: 1.0
+-- Last Change: Naveen Malreddy
+-- Date: 11/03/2022
+-- Time: 01:52 am
+-- Reason: Open Deliveries, added shipping point
+-- ******************************************************************
+
+---- Dimensions
+
+calday DATE not null DISTKEY,
+req_dlv_date DATE,
+
+-- Material
+material_id varchar(72),
+historical_material_group_1 varchar(160),
+historical_material_group_4 varchar(80),
+abc_code varchar(4),
+
+-- Sold-To Customer
+dealer_id varchar(40),
+sales_org_id varchar(16),
+division_id varchar(8),
+distribution_channel_id varchar(8),
+
+-- PAYER
+payer varchar(40),
+
+-- Shipto Customer & Geo Attributes
+SHIPTO_id varchar(40),
+SHIPTO_id_and_description varchar(204),
+SHIPTO_customer_country_id varchar(12),
+SHIPTO_customer_country_description varchar(204),
+SHIPTO_customer_city varchar(140),
+SHIPTO_customer_state varchar(12),
+SHIPTO_customer_zip_code varchar(40),
+
+-- Other Dimensions
+order_source_code_id varchar(16),
+order_source_code varchar(180),
+supplying_plant varchar(16),
+source varchar(40),
+Sales_Document varchar(40),
+Sales_Document_Item varchar(24),
+Price_Protect_item varchar(1),
+Committed_Date varchar(8),
+Pick_Created_Date varchar(8),
+
+-- Time (fiscal)
+fiscal_year smallint,
+fiscal_half_of_year varchar(8),
+fiscal_quarter varchar(8),
+fiscal_month smallint,
+fiscal_week_of_month smallint,
+fiscal_week_of_year smallint,
+
+-- Time (Calendar)
+calendar_year smallint, 
+calendar_half_of_year varchar(8),
+calendar_quarter varchar(8),
+calendar_month smallint,
+
+-- Key Figure ID
+key_figure_id varchar(80),
+key_figure_id_description varchar(240),
+
+---- Measures
+Delivery_dollars decimal(17,2),
+Delivery_units decimal(17,3),
+
+shipping_point varchar(16)
+)
+
+SORTKEY
+(
+	dealer_id,
+	sales_org_id,
+	division_id,
+	distribution_channel_id,
+	material_id
+);
+
