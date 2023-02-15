@@ -6,6 +6,8 @@
 -- Reason: Open Deliveries, added shipping point
 -- ******************************************************************
 
+Changes
+
 ---- Dimensions
 
 calday DATE not null DISTKEY,
